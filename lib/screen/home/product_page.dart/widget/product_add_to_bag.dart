@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:products_app/data/models/product_model.dart';
 import 'package:products_app/utils/my_icons.dart';
 import 'package:products_app/utils/my_utils.dart';
 
 class ProductAddToBag extends StatelessWidget {
-  const ProductAddToBag({super.key});
+  final ProductModel product;
+
+  const ProductAddToBag({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,12 @@ class ProductAddToBag extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12)),
                   child:const Center(
                       child: Text(
-                    '+',
+                    '-',
                     style: TextStyle(fontSize: 26),
                   ))),
               SizedBox(width: width(context)  * 0.04),
-              const Text(
-                '3',
+              Text(
+                product.count,
                 style: TextStyle(fontSize: 26),
               ),
               SizedBox(width: width(context)  * 0.04),

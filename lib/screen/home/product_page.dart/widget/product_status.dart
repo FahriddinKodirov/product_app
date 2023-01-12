@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:products_app/data/models/product_model.dart';
 import 'package:products_app/utils/my_colors.dart';
 import 'package:products_app/utils/my_icons.dart';
 import 'package:products_app/utils/my_utils.dart';
 
 class ProductStatus extends StatelessWidget {
-  const ProductStatus({super.key});
+  final ProductModel product;
+
+  const ProductStatus({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +79,17 @@ class ProductStatus extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: width(context) * 0.16),
-          child: const Text(
-            '\$ 1.8/kg',
-            style: TextStyle(color: MyColors.C_53E88B, fontSize: 22),
+          child: RichText(
+            text: TextSpan(
+            text: '\$ ${product.price}/',
+            style:const TextStyle(color: MyColors.C_53E88B, fontSize: 22),
+            children:const [
+            TextSpan(
+            text: 'kg',
+            style: TextStyle(color: Colors.black38, fontSize: 16),),
+            ]
+          ),
+          
           ),
         ),
       ],

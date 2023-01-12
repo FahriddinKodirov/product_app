@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:products_app/data/models/product_model.dart';
 import 'package:products_app/screen/home/product_page.dart/widget/product_add_to_bag.dart';
 import 'package:products_app/screen/home/product_page.dart/widget/product_status.dart';
 import 'package:products_app/utils/my_colors.dart';
 import 'package:products_app/utils/my_icons.dart';
-import 'package:products_app/utils/my_images.dart';
 import 'package:products_app/utils/my_utils.dart';
 
-class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+class ProductPage extends StatefulWidget {
+  final ProductModel product;
+
+  const ProductPage({super.key, required this.product});
+
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  bool favoriteTrue = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start, children: [
           SizedBox(
             height: height(context) * 0.03,
           ),
@@ -23,7 +34,10 @@ class ProductPage extends StatelessWidget {
               Padding(
                 padding:
                     EdgeInsets.only(top: height(context) * 0.034, left: width(context) * 0.055),
-                child: back(context),
+                child: InkWell(
+                  onTap:() {
+                    Navigator.pop(context);
+                  }, child: back(context),),
               ),
               Padding(
                 padding:
@@ -34,26 +48,29 @@ class ProductPage extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
-            height: height(context) * 0.5,
-            width: width(context) * 0.9,
-            child: Stack(
-              children: [
-                SizedBox(
-                    height: height(context) * 0.5,
-                    width: width(context) * 0.9,
-                    child: Image.asset(
-                      MyImages.tourThreePage,
-                      width: width(context) * 0.4,
-                    )),
-                Positioned(
-                    top: -height(context) * 0.05,
-                    right: -width(context) * 0.03,
-                    child: SvgPicture.asset(
-                      MyIcons.productLove,
-                    ))
-              ],
-            ),
+          Stack(
+            children: [
+              SizedBox(
+                  height: height(context) * 0.5,
+                  width: width(context) * 0.95,
+                  child: Image.network(
+                    widget.product.imageUrl,
+                  )),
+              Positioned(
+                  top: height(context) * 0.42,
+                  right: width(context)*0.001,
+                  child:InkWell(
+                    onTap: () {
+                      setState(() {
+                        favoriteTrue = !favoriteTrue;
+                      });
+                      
+                    },
+                    child:bigFavorite(context, favoriteTrue) ,
+                  )
+                   
+                  )
+            ],
           ),
           Padding(
             padding: EdgeInsets.only(left: width(context) * 0.07),
@@ -67,18 +84,22 @@ class ProductPage extends StatelessWidget {
             ]),
           ),
           Padding(
-            padding: EdgeInsets.only(right: width(context) * 0.6, top: height(context) * 0.016),
-            child:const Text('Mango',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
+            padding: EdgeInsets.only(left: width(context)*0.06, top: height(context) * 0.016),
+            child: Text(widget.product.productName,
+                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
           ),
           SizedBox(height: height(context) * 0.026),
-          const ProductStatus(),
+          ProductStatus(product: widget.product,),
           Padding(
-            padding: EdgeInsets.only(right: width(context) * 0.52, top: height(context) * 0.036),
-            child: const Text('Description',
+            padding: EdgeInsets.only(left: width(context) * 0.06, top: height(context) * 0.036),
+            child:const Text('Discription',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700)),
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width(context)*0.06),
+            child: Text(widget.product.description),
+          )
         ]),
-        bottomNavigationBar:const ProductAddToBag());
+        bottomNavigationBar: ProductAddToBag(product: widget.product,));
   }
 }

@@ -7,6 +7,7 @@ import 'package:products_app/screen/home/account_page/admin/categorise/all_categ
 import 'package:products_app/screen/home/account_page/admin/products/add_product_screen.dart';
 import 'package:products_app/screen/home/account_page/admin/products/all_product_screen.dart';
 import 'package:products_app/screen/home/account_page/admin/products/update_product_screen.dart';
+import 'package:products_app/screen/home/product_page.dart/product_page.dart';
 import 'package:products_app/screen/home/search_page/search_page.dart';
 import 'package:products_app/screen/home/tab_bar.dart';
 import 'package:products_app/screen/splash_page/splash_page.dart';
@@ -26,6 +27,7 @@ abstract class MyRoute {
   static const updateCategoriesPage = '/updateCategoriesPage';
   static const addCategoriesPage = '/addCategoriesPage';
   static const searchPage = '/searchPage';
+  static const productPage = '/productPage';
   
 
 }
@@ -66,6 +68,13 @@ class AppRoutes {
       // --------------- home ------------------
       case MyRoute.searchPage:
         return MaterialPageRoute(builder: (_) => const SearchPage());
+      
+      // ---------------- product -------------------------
+      case MyRoute.productPage:
+        final Map args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(builder: (_) => ProductPage(
+         product: args['product']
+        ));
       
 
       default:

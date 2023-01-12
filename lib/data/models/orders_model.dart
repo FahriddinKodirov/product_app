@@ -30,4 +30,16 @@ class OrdersModel {
        totalPrice: jsonData['totalPrice'] ?? 0.0
        );
   }
+
+  Map<String, dynamic> toJson() => 
+  {
+  'orderId':orderId,
+  'userId':userId,
+  'productId':productId,
+  'productName':productName,
+  'productImage':productImage,
+  'price':price,
+  'count':count,
+  'totalPrice':totalPrice,
+ };
 }

@@ -4,9 +4,10 @@ import 'package:products_app/data/models/category_model.dart';
 import 'package:products_app/screen/home/account_page/admin/admin_page.dart';
 import 'package:products_app/screen/home/home_page/widget/category_page.dart';
 import 'package:products_app/screen/home/search_page/widget/search_all_categories.dart';
+import 'package:products_app/screen/home/search_page/category_in_product/search_category_in_product_page.dart';
 import 'package:products_app/screen/home/search_page/widget/search_page_search.dart';
-import 'package:products_app/screen/home/search_page/widget/search_product_page.dart';
-import 'package:products_app/screen/home/search_page/widget/search_product_page_two.dart';
+import 'package:products_app/screen/home/search_page/category_in_product/search_product_page.dart';
+import 'package:products_app/screen/home/search_page/category_in_product/search_product_page_two.dart';
 import 'package:products_app/utils/my_icons.dart';
 import 'package:products_app/utils/my_utils.dart';
 import 'package:products_app/view_model/categories_view_model.dart';
@@ -80,22 +81,7 @@ class _SearchPageState extends State<SearchPage> {
                           padding:
                               EdgeInsets.only(left: height(context) * 0.022),
                           child: isFalse
-                              ? Column(
-                                children:  [
-                                   const CategoryPage(),
-                                   SizedBox(height: height(context)*0.028),
-                                   SearchProductPageTwo(
-                                    categoryLenth: categoryLenth,
-                                    height1: height(context)*0.5,
-                                    width1: width(context)*0.9,
-                                    categoryModel: categories[1],
-                                    count: 1,
-                                    extent: height(context)*0.16,)
-                                   
-
-                                ],
-                              )
-                              : Column(
+                              ? const SearchCategoryInProductPage():Column(
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.symmetric(
@@ -127,7 +113,6 @@ class _SearchPageState extends State<SearchPage> {
                                     SizedBox(height: height(context) * 0.03),
 
                                     //  gridWiew(height: height(context)*0.5, width: width(context)*0.9, count: 2, extent: height(context)*0.31, search: SearchProductPage(), categoryLenth: categoryLenth),
-                                    //  gridWiew(height: height(context)*0.5, width: width(context)*0.9, count: 1, extent: height(context)*0.18, search: SearchProductPageTwo(), categoryLenth: categoryLenth),
 
                                     isTrue
                                         ? SaerchAllCategories(

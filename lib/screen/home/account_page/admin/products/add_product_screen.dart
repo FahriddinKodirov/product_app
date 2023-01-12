@@ -20,7 +20,7 @@ class _AddProductPageState extends State<AddProductPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   String productImage =
-      "https://www.pngitem.com/pimgs/m/183-1831803_laptop-collection-png-transparent-png.png";
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh607FbsGkpHFlBIl0aVT29alPWT7qqyVztDx6hUbvYY9mcxtqqPZYBtBDAL1TZldelQM&usqp=CAU";
   String categoryId = '';
   String createAt = DateTime.now().toString();
   List<String> currencies = ['USD', 'SOM', 'RUBL'];
