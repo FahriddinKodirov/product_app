@@ -1,12 +1,5 @@
-import 'dart:ffi';
-
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:products_app/utils/my_colors.dart';
 import 'package:products_app/utils/my_icons.dart';
 import 'package:products_app/utils/my_utils.dart';

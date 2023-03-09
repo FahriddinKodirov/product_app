@@ -3,7 +3,6 @@ import 'package:products_app/screen/home/account_page/account_page.dart';
 import 'package:products_app/screen/home/account_page/admin/admin_page.dart';
 import 'package:products_app/screen/home/bag_page/bag_page.dart';
 import 'package:products_app/screen/home/home_page/home_page.dart';
-import 'package:products_app/screen/home/search_page/search_page.dart';
 import 'package:products_app/utils/my_colors.dart';
 
 class TabBarPage extends StatefulWidget {

@@ -2,7 +2,6 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
-import 'package:products_app/screen/auth_page/register/widget/login_in_text.dart';
 import 'package:products_app/screen/auth_page/register/widget/sign_up_text.dart';
 import 'package:products_app/screen/auth_page/register/widget/web_widget/web_view.dart';
 import 'package:products_app/utils/my_colors.dart';
@@ -89,7 +88,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               eye: icon()),
                           cursorHeight: 22,
                         ),
-                       
                       ],
                     ),
                   ),
@@ -121,7 +119,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       Center(
                           child:
                               SignUpText(onClickSignUp: widget.onClickSignIp)),
-
                       ],))
                 ],
               ),

@@ -4,9 +4,9 @@ class OrdersModel {
   String productId;
   String productName;
   String productImage;
-  double price;
+  int price;
   int count;
-  double totalPrice;
+  int totalPrice;
 
   OrdersModel({required this.orderId, 
           required this.userId, 
@@ -25,9 +25,9 @@ class OrdersModel {
        productId: jsonData['productId'] ?? '', 
        productName: jsonData['productName'] ?? '', 
        productImage: jsonData['productImage'] ?? '', 
-       price: jsonData['price'] ?? 0.0, 
+       price: jsonData['price'] ?? 0, 
        count: jsonData['count'] ?? 0, 
-       totalPrice: jsonData['totalPrice'] ?? 0.0
+       totalPrice: jsonData['totalPrice'] ?? 0
        );
   }
 
@@ -42,4 +42,25 @@ class OrdersModel {
   'count':count,
   'totalPrice':totalPrice,
  };
+
+ OrdersModel copyWith({
+   String? orderId,
+   String? userId,
+   String? productId,
+   String? productName,
+   String? productImage,
+   int? price,
+   int? totalPrice,
+   int? count,
+}) =>
+   OrdersModel(
+    orderId: orderId ?? this.orderId, 
+    userId: userId ?? this.userId, 
+    productId: productId ?? this.productId, 
+    productName: productName ?? this.productName, 
+    productImage: productImage ?? this.productImage, 
+    price: price ?? this.price, 
+    count: count ?? this.count, 
+    totalPrice: totalPrice ?? this.totalPrice,
+    );
 }
